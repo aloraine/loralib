@@ -1,5 +1,10 @@
-# download the file from the given url if not already present in the current working directory
-# read the file and return a data frame with named columns
+#' Get gene model data for a species
+#'
+#' For BINF 3121 Markdown "Compare gene lengths across species"
+#'
+#' @param url URL of BED-detail file to read
+#' @return Data frame with gene model data, including log10-transformed gene lengths and species
+#' @export
 getDataForOneSpecies = function(url) {
   fname = tail(unlist(strsplit(url,"/")),1)
   species = ifelse(length(grep("Araport11",fname))>0,"A_thaliana",paste(unlist(strsplit(fname,"_"))[1:2],collapse = "_"))
@@ -17,7 +22,16 @@ getDataForOneSpecies = function(url) {
   return(genes)
 }
 
-# return a vector containing URLs of gene model (bed-detail) files 
+#' Get gene model annotation BED-detail file URLs for species panel.
+#'
+#' For BINF 3121 Markdown "Compare gene lengths across species"
+#' Includes species: H_sapiens (human), M_musculus (mouse),
+#' D_melanogaster (fruit fly), X_tropicalis (frog), S_cerevisiae (yeast),
+#' A_thaliana (mouse-ear cress), O_sativa (rice), P_trichocarpa (cottonwood),
+#' D_reri (zebrafish)
+#'
+#' @return Character vector with gene model BED-detail file URLs
+#' @export
 getGeneModelUrls = function() {
   urls = c("http://igbquickload.org/quickload/H_sapiens_Dec_2013/H_sapiens_Dec_2013_ncbiRefSeqCurated.bed.gz",
             "http://igbquickload.org/quickload/M_musculus_Dec_2011/M_musculus_Dec_2011_refGene.bed.gz",
@@ -32,17 +46,27 @@ getGeneModelUrls = function() {
   return(urls)
 }
 
-# get a giant data frame with gene models for all the species
-getDataForAllSpecies = function() {
+#' Get gene model data for species panel
+#'
+#' Used in BINF 3121 Markdown "Compare gene lengths across species"
+#'
+#' @return Data frame with gene model data for all species in the panel. Includes columns with species (a factor) and log10-transformed gene lengths.
+#' @export
+getGeneLengthsForPanel = function() {
   urls = getGeneModelUrls()
   lst = lapply(urls,getDataForOneSpecies)
   df = Reduce(rbind,lst)
   return(df)
 }
 
-# accepts a data frame with gene model lengths, output from getDataForAllSpecies
-# get a sorted, named vector of median lengths by species
-getMediansBySpecies = function(dat) {
+#' Get gene model median lengths for species panel
+#'
+#' Used in BINF 3121 Markdown "Compare gene lengths across species"
+#'
+#' @param dat - Output of getGeneLengthsForPanel
+#' @return Named numeric vector with median gene lengths, sorted by size
+#' @export
+getMedianGeneLengthsForPanel = function(dat) {
   species = levels(dat$species)
   medians = sapply(species,function(x){median(dat[dat$species==x,"log10length"])})
   o = order(medians,decreasing=FALSE)
@@ -50,19 +74,16 @@ getMediansBySpecies = function(dat) {
   return(medians)
 }
 
-#' Load chromosomes and their sizes for a genome
+#' Loads chromosomes and their sizes for one genome.
 #'
-#' This function reads the genome.txt file from an IGB Quickload site.
-#' It returns a data frame with three columns:
-#' 
-#' species - IGB genome directory (e.g., H_sapiens)
-#' chr - chromosome names (column 1 of genome.txt)
-#' size - chromosome sizes
+#' Used in BINF 3121 Markdown "Compare gene lengths across species"
+#' Reads the genome.txt files from an IGB Quickload site.
+#' Removes poorly-assembled or alternative chromosomes from assemblies.
 #'
-#' @param u URL path to the genome version directory in IGB quickload
-#' @return data frame
+#' @param u URL of gene model annotation file
+#' @return Data frame with chromosome names, sizes, and species (a factor)
 #' @export
-getGenomeStructure = function(u) {
+getGenomeStructureForOneSpecies = function(u) {
   genome_size_url = paste(c(head(unlist(strsplit(u,"/")),-1),"genome.txt"),collapse="/")
   fname = tail(unlist(strsplit(u,"/")),1)
   species = ifelse(length(grep("Araport11",fname))>0,"A_thaliana",paste(unlist(strsplit(fname,"_"))[1:2],collapse = "_"))
@@ -79,18 +100,33 @@ getGenomeStructure = function(u) {
   return(dat)
 }
 
-getAllGenomeStructures = function() {
+#' Loads chromosomes and their sizes for all genomes represented in getGeneModelUrls
+#'
+#' Used in BINF 3121 Markdown "Compare gene lengths across species"
+#' Uses getGenomeStructureForOneSpecies.
+#'
+#' @return Data frame with chromosome names, sizes, and species (a factor)
+#' @export
+getGenomeStructuresForPanel = function() {
   urls = getGeneModelUrls()
-  lst = lapply(urls,getGenomeStructure)
+  lst = lapply(urls,getGenomeStructureForOneSpecies)
   df = Reduce(rbind,lst)
   return(df)
 }
 
-# accepts a data frame of chromosome sizes, the output from getAllGenomeStructures
-# returns a named vector with genome size
-getGenomeSizes = function(d) {
-  species = levels(d$species)
-  sizes = unlist(lapply(species,function(x)sum(d[d$species==x,]$size)))
+#' Creates a named vector with species panel genome sizes
+#'
+#' Used in BINF 3121 Markdown "Compare gene lengths across species"
+#'
+#' @param dat - Output from getGenomeStructuresForAllSpecies (optional)
+#' @return Named numeric vector with genome sizes
+#' @export
+getGenomeSizesForPanel = function(dat=NULL) {
+  if (is.null(dat)) {
+    dat = getGenomeStructuresForAllSpecies()
+  }
+  species = levels(dat$species)
+  sizes = unlist(lapply(species,function(x)sum(dat[dat$species==x,]$size)))
   names(sizes)=species
   return(sizes)
 }

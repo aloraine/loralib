@@ -14,3 +14,6 @@ LazyData: true
 RoxygenNote: 7.0.2
 Suggests: 
     testthat
+Imports: 
+    XML,
+    xml2
