@@ -13,6 +13,8 @@ install_github("aloraine/loralib")
 
 ## Example
 
+Draw a scatter plot showing the relationship between gene length and genome size.
+
 ```
 library(loralib)
 genes=getGeneLengthsForPanel()
