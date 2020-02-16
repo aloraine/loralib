@@ -1,0 +1,9 @@
+Package: loralib
+Version: 0.0.1
+Title: Convenience Functions for Genomic Data Exploration and Analysis
+Description: Functions to help researchers and students explore and analysis genomic data
+Author: Ann E. Loraine
+Maintainer: Ann E. Loraine <aloraine@gmail.com>
+License: GNU GENERAL PUBLIC LICENSE
+LazyData: yes
+RoxygenNote: 6.0.1
