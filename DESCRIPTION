@@ -8,7 +8,9 @@ Authors@R:
            email = "ann.loraine@uncc.edu",
            comment = c(ORCID = "0000-0002-8365-0177"))
 Description: Functions to help researchers and students explore and analyze genomic data.
-License: Artistic-2.0
+License: GNU GENERAL PUBLIC LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
+Suggests: 
+    testthat
