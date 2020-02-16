@@ -3,6 +3,7 @@
 
 # emacs temp files
 *~
+*#
 
 # History files
 .Rhistory
