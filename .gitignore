@@ -5,6 +5,9 @@
 *~
 *#
 
+# gene model files
+*.bed.gz
+
 # History files
 .Rhistory
 .Rapp.history
