@@ -10,9 +10,9 @@ getGeneModelUrls()
 Character vector with gene model BED-detail file URLs
 }
 \description{
-For BINF 3121 Markdown "Compare gene lengths across species"
-Includes species: H_sapiens (human), M_musculus (mouse),
+For BINF 3121 Markdown "Compare gene lengths across species."
+Returned species include: H_sapiens (human), M_musculus (mouse),
 D_melanogaster (fruit fly), X_tropicalis (frog), S_cerevisiae (yeast),
 A_thaliana (mouse-ear cress), O_sativa (rice), P_trichocarpa (cottonwood),
-D_reri (zebrafish)
+D_rerio (zebrafish)
 }

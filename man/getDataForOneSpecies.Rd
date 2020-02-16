@@ -2,16 +2,16 @@
 % Please edit documentation in R/GeneLengthFunctions.R
 \name{getDataForOneSpecies}
 \alias{getDataForOneSpecies}
-\title{Get gene model data for a species}
+\title{Get gene model data for a species.}
 \usage{
 getDataForOneSpecies(url)
 }
 \arguments{
-\item{url}{URL of BED-detail file to read}
+\item{url}{URL of species BED-detail file to read}
 }
 \value{
-Data frame with gene model data, including log10-transformed gene lengths and species
+Data frame with gene model data, including species (as a factor) and log10-transformed gene lengths.
 }
 \description{
-For BINF 3121 Markdown "Compare gene lengths across species"
+For BINF 3121 Markdown "Compare gene lengths across species."
 }

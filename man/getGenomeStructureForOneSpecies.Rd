@@ -2,7 +2,7 @@
 % Please edit documentation in R/GeneLengthFunctions.R
 \name{getGenomeStructureForOneSpecies}
 \alias{getGenomeStructureForOneSpecies}
-\title{Loads chromosomes and their sizes for one genome.}
+\title{Load genome panel chromosomes and sizes.}
 \usage{
 getGenomeStructureForOneSpecies(u)
 }
@@ -13,7 +13,7 @@ getGenomeStructureForOneSpecies(u)
 Data frame with chromosome names, sizes, and species (a factor)
 }
 \description{
-Used in BINF 3121 Markdown "Compare gene lengths across species"
+Used for BINF 3121 Markdown "Compare gene lengths across species."
 Reads the genome.txt files from an IGB Quickload site.
-Removes poorly-assembled or alternative chromosomes from assemblies.
+Removes poorly-assembled or alternative chromosomes.
 }

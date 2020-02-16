@@ -2,7 +2,7 @@
 % Please edit documentation in R/GeneLengthFunctions.R
 \name{getGenomeStructuresForPanel}
 \alias{getGenomeStructuresForPanel}
-\title{Loads chromosomes and their sizes for all genomes represented in getGeneModelUrls}
+\title{Load chromosomes and their sizes for all genomes in the panel.}
 \usage{
 getGenomeStructuresForPanel()
 }
@@ -10,6 +10,6 @@ getGenomeStructuresForPanel()
 Data frame with chromosome names, sizes, and species (a factor)
 }
 \description{
-Used in BINF 3121 Markdown "Compare gene lengths across species"
+Used in BINF 3121 Markdown "Compare gene lengths across species."
 Uses getGenomeStructureForOneSpecies.
 }

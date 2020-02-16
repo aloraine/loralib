@@ -2,13 +2,16 @@
 % Please edit documentation in R/GeneLengthFunctions.R
 \name{getGeneLengthsForPanel}
 \alias{getGeneLengthsForPanel}
-\title{Get gene model data for species panel}
+\title{Get gene model data for species panel.}
 \usage{
-getGeneLengthsForPanel()
+getGeneLengthsForPanel(urls = NULL)
+}
+\arguments{
+\item{urls}{gene model BED-detail file URLs. It is optional. If not provided uses output from getGeneModelUrls.}
 }
 \value{
-Data frame with gene model data for all species in the panel. Includes columns with species (a factor) and log10-transformed gene lengths.
+Gene model data frame built from urls. Includes columns with species (a factor) and log10-transformed gene lengths.
 }
 \description{
-Used in BINF 3121 Markdown "Compare gene lengths across species"
+Used in BINF 3121 Markdown "Compare gene lengths across species."
 }

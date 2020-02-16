@@ -2,15 +2,15 @@
 % Please edit documentation in R/GeneLengthFunctions.R
 \name{getMedianGeneLengthsForPanel}
 \alias{getMedianGeneLengthsForPanel}
-\title{Get gene model median lengths for species panel}
+\title{Get gene model median lengths for species panel.}
 \usage{
 getMedianGeneLengthsForPanel(dat)
 }
 \arguments{
-\item{dat}{- Output of getGeneLengthsForPanel}
+\item{dat}{- A data frame, output of getGeneLengthsForPanel}
 }
 \value{
-Named numeric vector with median gene lengths, sorted by size
+Named numeric vector with median gene lengths
 }
 \description{
 Used in BINF 3121 Markdown "Compare gene lengths across species"
