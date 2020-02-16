@@ -50,6 +50,18 @@ getMediansBySpecies = function(dat) {
   return(medians)
 }
 
+#' Load chromosomes and their sizes for a genome
+#'
+#' This function reads the genome.txt file from an IGB Quickload site.
+#' It returns a data frame with three columns:
+#' 
+#' species - IGB genome directory (e.g., H_sapiens)
+#' chr - chromosome names (column 1 of genome.txt)
+#' size - chromosome sizes
+#'
+#' @param u URL path to the genome version directory in IGB quickload
+#' @return data frame
+#' @export
 getGenomeStructure = function(u) {
   genome_size_url = paste(c(head(unlist(strsplit(u,"/")),-1),"genome.txt"),collapse="/")
   fname = tail(unlist(strsplit(u,"/")),1)
