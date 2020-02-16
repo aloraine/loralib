@@ -6,6 +6,7 @@ Inspired by rafalib.
 To install from github:
 
 ```
+install.packages("devtools")
 library(devtools)
 install_github("aloraine/loralib")
 ```
