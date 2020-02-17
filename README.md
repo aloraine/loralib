@@ -1,7 +1,7 @@
 # loralib
 
 Functions used in teaching Statistics for Bioinformatics at UNC Charlotte.
-Inspired by rafalib.
+Inspired by [rafalib](https://github.com/rafalab/rafalib).
 
 To install from github:
 
@@ -12,6 +12,8 @@ install_github("aloraine/loralib")
 ```
 
 ## Example
+
+Draw a scatter plot showing the relationship between gene length and genome size.
 
 ```
 library(loralib)
