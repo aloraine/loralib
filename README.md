@@ -14,6 +14,7 @@ install_github("aloraine/loralib")
 ## Example
 
 Draw a scatter plot showing the relationship between gene length and genome size.
+Then draw a boxplot showing distribution of gene lengths by species.
 
 ```
 library(loralib)
@@ -31,3 +32,5 @@ par(mar=c(5.1,7.5,4.1,2.1))
 boxplot(log10length~species,data=gene_lengths,las=1,horizontal=TRUE,xlab=ylab)
 par(old.par)
 ```
+
+
