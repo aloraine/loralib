@@ -29,7 +29,7 @@ plot(medians~sizes,pch=16,xlab=xlab,ylab=ylab,las=1,col="lightblue",main=main,xl
 text(medians~sizes,labels=names(medians),cex=0.9,font=2,pos=4)
 old.par=par(no.readonly=TRUE)
 par(mar=c(5.1,7.5,4.1,2.1))
-boxplot(log10length~species,data=gene_lengths,las=1,horizontal=TRUE,xlab=ylab)
+boxplot(log10length~species,data=gene,las=1,horizontal=TRUE,xlab=ylab)
 par(old.par)
 ```
 
