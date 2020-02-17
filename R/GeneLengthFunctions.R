@@ -58,7 +58,6 @@ getGeneLengthsForPanel = function(urls=NULL) {
   if (is.null(urls)) {
     urls = getGeneModelUrls()
   }
-  urls = getGeneModelUrls()
   lst = lapply(urls,getDataForOneSpecies)
   df = Reduce(rbind,lst)
   return(df)
