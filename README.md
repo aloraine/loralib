@@ -14,6 +14,7 @@ install_github("aloraine/loralib")
 ## Example
 
 ```
+library(loralib)
 genes=getGeneLengthsForPanel()
 medians=getMedianGeneLengthsForPanel(genes)
 sizes=getGenomeSizesForPanel()/10**6

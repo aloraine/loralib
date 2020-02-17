@@ -7,7 +7,7 @@
 getGenomeVersionForQuickloads(url = "http://igbquickload.org/quickload")
 }
 \arguments{
-\item{u}{Url of the IGB Quickload site}
+\item{url}{Url of the IGB Quickload site. Optional. Default is http://igbquickload.org/quickload.}
 }
 \value{
 Data frame read from contents.txt

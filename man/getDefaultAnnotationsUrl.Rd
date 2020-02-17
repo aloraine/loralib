@@ -10,7 +10,9 @@ getDefaultAnnotationsUrl(
 )
 }
 \arguments{
-\item{u}{Url of the the genome directory}
+\item{genome_version}{IGB-compatible genome version name, e.g., H_sapiens_Dec_2013}
+
+\item{quickload_root}{URL of Quickload site. Optional. Default is http://igbquickload.org/quickload.}
 }
 \description{
 Typically there is only one such file, and it usually contains curated,

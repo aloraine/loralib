@@ -7,8 +7,9 @@
 #' genome_version - an IGB compatible genome version, e.g., H_sapiens_Jul_2013
 #' description - human-friendly, free-text description of the genome version
 #'
-#' @param u Url of the IGB Quickload site
+#' @param url Url of the IGB Quickload site. Optional. Default is http://igbquickload.org/quickload.
 #' @return Data frame read from contents.txt
+#' @importFrom utils read.delim
 #' @export
 getGenomeVersionForQuickloads = function(url="http://igbquickload.org/quickload") {
   u = paste(url,"contents.txt",sep="/")
@@ -28,12 +29,13 @@ getGenomeVersionForQuickloads = function(url="http://igbquickload.org/quickload"
 #'
 #' If no file is loaded by default, returns NA.
 #'
-#' @param u Url of the the genome directory
+#' @param genome_version IGB-compatible genome version name, e.g., H_sapiens_Dec_2013
+#' @param quickload_root URL of Quickload site. Optional. Default is http://igbquickload.org/quickload.
 #' @export
 getDefaultAnnotationsUrl = function(genome_version,quickload_root="http://igbquickload.org/quickload") {
   u = paste(quickload_root,genome_version,"annots.xml",sep="/")
   doc = xml2::read_xml(u)
-  nodes = xml_find_all(doc,xpath="//file[@load_hint='Whole Sequence']")
-  names = xml_attr("name")
+  nodes = xml2::xml_find_all(doc,xpath="//file[@load_hint='Whole Sequence']")
+  names = xml2::xml_attr("name")
   return(names)
 }

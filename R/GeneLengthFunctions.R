@@ -4,6 +4,7 @@
 #'
 #' @param url URL of species BED-detail file to read
 #' @return Data frame with gene model data, including species (as a factor) and log10-transformed gene lengths.
+#' @importFrom utils download.file read.delim tail
 #' @export
 getDataForOneSpecies = function(url) {
   fname = tail(unlist(strsplit(url,"/")),1)
@@ -69,6 +70,7 @@ getGeneLengthsForPanel = function(urls=NULL) {
 #'
 #' @param dat - A data frame, output of getGeneLengthsForPanel
 #' @return Named numeric vector with median gene lengths
+#' @importFrom stats median
 #' @export
 getMedianGeneLengthsForPanel = function(dat) {
   species = levels(dat$species)
@@ -84,6 +86,7 @@ getMedianGeneLengthsForPanel = function(dat) {
 #'
 #' @param u URL of gene model annotation file
 #' @return Data frame with chromosome names, sizes, and species (a factor)
+#' @importFrom utils head
 #' @export
 getGenomeStructureForOneSpecies = function(u) {
   genome_size_url = paste(c(head(unlist(strsplit(u,"/")),-1),"genome.txt"),collapse="/")
